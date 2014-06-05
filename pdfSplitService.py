@@ -1,7 +1,10 @@
 import web
 
-urls=('/pdfsplit','split')
-app = web.application(urls.globals())
+urls = (
+	'/pdfsplit','split'
+)
+
+app = web.application(urls,globals())
 
 class split:
 	def GET(self):
@@ -16,3 +19,6 @@ class split:
 	def POST(self):
 		file = web.input(myfile={})
 		return "filename: " + x['myfile'].filename
+
+if __name__ == '__main__':
+	app.run()
