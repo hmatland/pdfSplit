@@ -1,7 +1,9 @@
 import web
+from pdfSplit import split_pages
 
 urls = (
-	'/pdfsplit','split'
+	'/pdfsplit','split',
+	'/pdf/(.*)','pdf'
 )
 
 app = web.application(urls,globals())
@@ -21,9 +23,27 @@ class split:
 		directory = '/var/pdfSplit/pdf' # change this to the directory you want to store the file in.
 		if 'myfile' in x: # to check if the file-object is created
 			filename = x['myfile'].filename
-			fout = open(directory +'/'+ filename,'w') # creates the file where the uploaded file should be stored
-			fout.write(x.myfile.file.read()) # writes the uploaded file to the newly created file.
-			fout.close() # closes the file, upload complete.
-		raise web.seeother('/upload')
+			if('.pdf' in filename):
+				fout = open(directory +'/'+ filename,'w') # creates the file where the uploaded file should be stored
+				fout.write(x.myfile.file.read()) # writes the uploaded file to the newly created file.
+				fout.close() # closes the file, upload complete.
+				split_pages(directory +'/'+ filename,directory +'/splitted_'+ filename)
+				raise web.seeother('/pdf/splitted_'+ filename)
+
+
+		raise web.notfound()
+
+
+class pdf:
+	def GET(self,name):
+		extension = name.split('.')[-1]
+		if name in os.listdir('pdf'):
+			web.header('Content-Type', 'application/pdf')
+			return open('pdf/%s' %name, 'rb').read()
+		else:
+			raise web.notfound()
+
+
 if __name__ == '__main__':
 	app.run()
+
