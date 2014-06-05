@@ -18,7 +18,7 @@ class split:
 
 	def POST(self):
 		file = web.input(myfile={})
-		return "filename: " + x['myfile'].filename
+		return "filename: " + file['myfile'].filename
 
 if __name__ == '__main__':
 	app.run()
