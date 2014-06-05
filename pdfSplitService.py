@@ -17,8 +17,14 @@ class split:
 </body></html>"""
 
 	def POST(self):
-		file = web.input(myfile={})
-		return "filename: " + file['myfile'].filename
+		x = web.input(myfile={})
+        directory = '/var/pdfSplit/pdf' # change this to the directory you want to store the file in.
+        if 'myfile' in x: # to check if the file-object is created
+        	filename = x['myfile'].filename
+            fout = open(directory +'/'+ filename,'w') # creates the file where the uploaded file should be stored
+            fout.write(x.myfile.file.read()) # writes the uploaded file to the newly created file.
+            fout.close() # closes the file, upload complete.
+        raise web.seeother('/upload')
 
 if __name__ == '__main__':
 	app.run()
