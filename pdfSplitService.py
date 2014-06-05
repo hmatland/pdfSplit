@@ -40,9 +40,12 @@ class pdf:
 		extension = name.split('.')[-1]
 		if name in os.listdir('pdf'):
 			web.header('Content-Type', 'application/pdf')
-			return open('pdf/%s' %name, 'rb').read()
+			pdf = open('pdf/%s' %name, 'rb').read()
+			delete_pdfs(name)
+			return pdf
 		else:
 			raise web.notfound()
+
 
 
 if __name__ == '__main__':
