@@ -1,7 +1,6 @@
 import web
 import os
-from pdfSplit import split_pages
-from pdfSplit import delete_pdfs
+import pdfSplit
 
 urls = (
 	'/.*','split'
