@@ -7,6 +7,7 @@ from pdfSplit import split_pages
 
 urls = (
 	'/pdfSplit/pdf/(.+)','pdf',
+	'/pdf/(.+)','pdf',
 	'/.*','split'
 )
 app = web.application(urls,globals())
