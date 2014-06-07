@@ -2,7 +2,8 @@ import web
 import os
 import sys
 sys.path.append('/var/www/pdfSplit')
-import pdfSplit
+from pdfSplit import delete_pdfs
+from pdfSplit import split_pages
 
 urls = (
 	'/.*','split',
