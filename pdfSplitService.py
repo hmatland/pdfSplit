@@ -7,7 +7,7 @@ import pdfSplit
 urls = (
 	'/.*','split'
 )
-
+app = web.application(urls,globals())
 class split:
 	def GET(self):
 		return """<html><head></head><body>
@@ -46,5 +46,5 @@ class pdf:
 			raise web.notfound()
 
 
-app = web.application(urls,globals()).wsgifunc()
+application = app.wsgifunc()
 
