@@ -4,8 +4,6 @@ from pdfSplit import split_pages
 from pdfSplit import delete_pdfs
 
 urls = (
-	'/pdfsplit','split',
-	'/pdf/(.*)','pdf',
 	'/.*','split'
 )
 
