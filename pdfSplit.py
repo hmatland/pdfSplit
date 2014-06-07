@@ -3,10 +3,6 @@ import math
 import pyPdf
 import os
 
-def delete_pdfs(path):
-  os.remove(path)
-  os.remove(path.replace('splitted_',''))
-
 def split_pages(src, dst):
   src_f = file(src, 'r+b')
   dst_f = file(dst, 'w+b')

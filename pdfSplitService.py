@@ -2,11 +2,9 @@ import web
 import os
 import sys
 sys.path.append('/var/www/pdfSplit')
-from pdfSplit import delete_pdfs
 from pdfSplit import split_pages
 
 urls = (
-	'/pdfSplit/pdf/(.+)','pdf',
 	'/pdf/(.+)','pdf',
 	'/.*','split'
 )
@@ -44,7 +42,8 @@ class pdf:
 		if name in os.listdir(directory):
 			web.header('Content-Type', 'application/pdf')
 			pdf = open(directory+'/'+name, 'rb').read()
-			#delete_pdfs(directory+'/'+name)
+			os.remove(directory+'/'+name)
+  			os.remove(directory+'/'+name.replace('splitted_',''))
 			return pdf
 		else:
 			raise web.notfound()
