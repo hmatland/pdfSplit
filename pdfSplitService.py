@@ -44,7 +44,7 @@ class pdf:
 		if name in os.listdir(directory):
 			web.header('Content-Type', 'application/pdf')
 			pdf = open(directory+'/'+name, 'rb').read()
-			delete_pdfs(directory+'/'+name)
+			#delete_pdfs(directory+'/'+name)
 			return pdf
 		else:
 			raise web.notfound()
