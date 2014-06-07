@@ -5,10 +5,11 @@ from pdfSplit import delete_pdfs
 
 urls = (
 	'/pdfsplit','split',
-	'/pdf/(.*)','pdf'
+	'/pdf/(.*)','pdf',
+	'/.*','split'
 )
 
-app = web.application(urls,globals())
+
 
 class split:
 	def GET(self):
@@ -47,8 +48,5 @@ class pdf:
 		else:
 			raise web.notfound()
 
-
-
-if __name__ == '__main__':
-	app.run()
+app = web.application(urls,globals()).wsgifunc()
 
