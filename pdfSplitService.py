@@ -1,5 +1,7 @@
 import web
 import os
+import sys
+sys.path.append('/var/www/pdfSplit')
 import pdfSplit
 
 urls = (
