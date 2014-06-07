@@ -39,11 +39,12 @@ class split:
 
 class pdf:
 	def GET(self,name):
+		directory = '/var/www/pdfSplit/pdf'
 		extension = name.split('.')[-1]
-		if name in os.listdir('/var/www/pdfSplit/pdf'):
+		if name in os.listdir(directory):
 			web.header('Content-Type', 'application/pdf')
-			pdf = open('/var/www/pdfSplit/pdf/%s' %name, 'rb').read()
-			delete_pdfs(name)
+			pdf = open(directory+name, 'rb').read()
+			delete_pdfs(directory+name)
 			return pdf
 		else:
 			raise web.notfound()
