@@ -5,7 +5,8 @@ sys.path.append('/var/www/pdfSplit')
 import pdfSplit
 
 urls = (
-	'/.*','split'
+	'/.*','split',
+	'/pdf','pdf'
 )
 app = web.application(urls,globals())
 class split:
@@ -20,7 +21,7 @@ class split:
 
 	def POST(self):
 		x = web.input(myfile={})
-		directory = '/var/pdfSplit/pdf' # change this to the directory you want to store the file in.
+		directory = '/var/www/pdfSplit/pdf' # change this to the directory you want to store the file in.
 		if 'myfile' in x: # to check if the file-object is created
 			filename = x['myfile'].filename
 			if('.pdf' in filename):
