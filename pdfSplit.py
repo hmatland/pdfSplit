@@ -3,9 +3,9 @@ import math
 import pyPdf
 import os
 
-def delete_pdfs(name):
-  os.remove(directory+name)
-  os.remove(directory+name.replace('splitted_',''))
+def delete_pdfs(path):
+  os.remove(path)
+  os.remove(path.replace('splitted_',''))
 
 def split_pages(src, dst):
   src_f = file(src, 'r+b')
