@@ -6,8 +6,8 @@ from pdfSplit import delete_pdfs
 from pdfSplit import split_pages
 
 urls = (
-	'/.*','split',
-	'/pdf','pdf'
+	'/pdfSplit/pdf','pdf'
+	'/.*','split'
 )
 app = web.application(urls,globals())
 class split:
