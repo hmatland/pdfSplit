@@ -40,7 +40,7 @@ class split:
 class pdf:
 	def GET(self,name):
 		extension = name.split('.')[-1]
-		if name in os.listdir('pdf'):
+		if name in os.listdir('/var/www/pdfSplit/pdf'):
 			web.header('Content-Type', 'application/pdf')
 			pdf = open('pdf/%s' %name, 'rb').read()
 			delete_pdfs(name)
