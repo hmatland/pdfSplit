@@ -9,8 +9,6 @@ urls = (
 	'/.*','split'
 )
 
-
-
 class split:
 	def GET(self):
 		return """<html><head></head><body>
@@ -47,6 +45,7 @@ class pdf:
 			return pdf
 		else:
 			raise web.notfound()
+
 
 app = web.application(urls,globals()).wsgifunc()
 
