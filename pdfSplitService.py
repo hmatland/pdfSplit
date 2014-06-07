@@ -43,7 +43,7 @@ class pdf:
 		extension = name.split('.')[-1]
 		if name in os.listdir(directory):
 			web.header('Content-Type', 'application/pdf')
-			pdf = open(directory+name, 'rb').read()
+			pdf = open(directory+'/'+name, 'rb').read()
 			delete_pdfs(directory+'/'+name)
 			return pdf
 		else:
